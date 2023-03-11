@@ -1,10 +1,10 @@
-# Р”РѕРјР°С€РЅСЏСЏ СЂР°Р±РѕС‚Р° в„– 1. РџРѕРґРєР»СЋС‡Р°РµРј Р±Р°Р·С‹ РґР°РЅРЅС‹С… Рє РїСЂРѕРµРєС‚Сѓ
+# Домашняя работа № 1. Подключаем базы данных к проекту
 
-1. Р”Р»СЏ СЂРµС€РµРЅРёСЏ РґРѕРјР°С€РЅРµРіРѕ Р·Р°РґР°РЅРёСЏ РёСЃРїРѕР»СЊР·РѕРІР°Р» EntityFrameworkCore. РЈСЃС‚Р°РЅРѕРІРёР» Npgsql.EntityFrameworkCore.PostgreSQL
+1. Для решения домашнего задания использовал EntityFrameworkCore. Установил Npgsql.EntityFrameworkCore.PostgreSQL
 
-2. Р’ РєР°С‡РµСЃС‚РІРµ Р‘Р” РІС‹Р±СЂР°Р» Р‘Р” Otus
+2. В качестве БД выбрал БД Otus
 
-3. РЎРѕР·РґР°Р» РєР»Р°СЃСЃС‹ СЃСѓС‰РЅРѕСЃС‚РµР№ (Person, Student, Teacher, Course):
+3. Создал классы сущностей (Person, Student, Teacher, Course):
 
 ```cs
 public class Person
@@ -43,7 +43,7 @@ public class Student : Person
     {
         [MaybeNull]
         [Column(name: "enrollmentdate")]      
-        public DateTime EnrollmentDate { get; set; } // РґР°С‚Р° Р·Р°С‡РёР»РµРЅРёСЏ
+        public DateTime EnrollmentDate { get; set; } // дата зачиления
                                                      // 
 
         [MaybeNull]
@@ -63,13 +63,13 @@ public class Teacher: Person
         [MaybeNull]
         [StringLength(maximumLength: 250)]
         [Column(name: "education")]
-        public string Education { get; set; } //  РѕР±СЂР°Р·РѕРІР°РЅРёРµ 
+        public string Education { get; set; } //  образование 
 
 
         [MaybeNull]
         [StringLength(maximumLength: 250)]
         [Column(name: "job")]
-        public string Job { get; set; } // РјРµСЃС‚Рѕ СЂР°Р±РѕС‚С‹
+        public string Job { get; set; } // место работы
 
 
         [MaybeNull]
