@@ -9,8 +9,16 @@ namespace hm1_db.Entities
     {
         [MaybeNull]
         [Column(name: "enrollmentdate")]      
-        public DateTime EnrollmentDate { get; set; } // дата зачиления    
+        public DateTime EnrollmentDate { get; set; } // дата зачиления
+                                                     // 
 
+        [MaybeNull]
+        public Course? Course { get; set; }
+
+
+        [MaybeNull]
+        [Column(name: "courseid")]
+        public int? CourseId { get; set; }
 
     }
 }

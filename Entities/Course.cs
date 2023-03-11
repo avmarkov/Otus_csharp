@@ -33,7 +33,7 @@ namespace hm1_db.Entities
 
         [MaybeNull]
         [Column(name: "studentid")]
-        public ICollection<Student> StudentId { get; set; }
+        public ICollection<Student> StudentId { get; set; } = new List<Student>();
 
         [MaybeNull]
         [Column(name: "teacherid")]

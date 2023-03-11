@@ -14,6 +14,7 @@ namespace hm1_db
         public OtusContext()
         {
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            Database.EnsureDeleted();
             Database.EnsureCreated();
             
         }

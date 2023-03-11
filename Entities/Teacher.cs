@@ -23,5 +23,13 @@ namespace hm1_db.Entities
         public string Job { get; set; } // место работы
 
 
+        [MaybeNull]
+        public Course? Course { get; set; }
+
+
+        [MaybeNull]        
+        [Column(name: "courseid")]
+        public int? CourseId { get; set; }
+
     }
 }
