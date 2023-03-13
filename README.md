@@ -256,3 +256,67 @@ static bool PrintTables(OtusContext db)
     return res;
 }
 ```
+
+Результат вывода содержимого таблиц:
+
+> <image src="images/print_tables.png" alt="print_tables">
+
+### 4. Добавить в программу возможность добавления в таблицу на выбор.
+Для добавления я выбрал таблицу student. Добавление реализовано в функции AddNewStudent(OtusContext db)
+
+```cs
+static bool AddNewStudent(OtusContext db)
+{
+    bool res = true;
+    Console.WriteLine();
+
+    Console.WriteLine("Для добавления данных в таблицу student нажмите клавишу \"Пробел\". Для выхода - \"Enter\"");
+
+    var key = Console.ReadKey().Key;
+    Console.WriteLine();
+    Console.WriteLine("Нажата клавиша " + key.ToString());
+    if (key == ConsoleKey.Spacebar)
+    {
+        Student student = new Student();
+
+        Console.WriteLine("Введите фамилию: ");
+        var lastName = Console.ReadLine();
+        student.LastName = lastName;
+
+        Console.WriteLine("Введите имя: ");
+        var firstName = Console.ReadLine();
+        student.FirstName = firstName;
+
+        Console.WriteLine("Введите отчетство: ");
+        var surName = Console.ReadLine();
+        student.SurName = surName;
+
+        Console.WriteLine("Введите телефон: ");
+        var phone = Console.ReadLine();
+        student.Phone = phone;
+
+        Console.WriteLine("Введите элетронную почту: ");
+        var email = Console.ReadLine();
+        student.Email = email;
+
+        Console.WriteLine("Введите дату зачисления: ");
+        var enrollmentDate = Console.ReadLine();
+        student.EnrollmentDate = DateTime.Parse(s: enrollmentDate);
+
+        try
+        {
+            db.Students.Add(student);
+            db.SaveChanges();
+            Console.WriteLine("Новый студент добавлен в БД.");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error! " + e.Message);
+            res = false;
+        }
+
+
+    }
+    return res;
+}
+```

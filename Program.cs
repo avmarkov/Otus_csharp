@@ -6,10 +6,62 @@ using (OtusContext db = new OtusContext())
 {
     FillTables(db);
     PrintTables(db);
-    Console.ReadLine(); 
-
+    AddNewStudent(db);
 }
+static bool AddNewStudent(OtusContext db)
+{
+    bool res = true;
+    Console.WriteLine();
 
+    Console.WriteLine("Для добавления данных в таблицу student нажмите клавишу \"Пробел\". Для выхода - \"Enter\"");
+
+    var key = Console.ReadKey().Key;
+    Console.WriteLine();
+    Console.WriteLine("Нажата клавиша " + key.ToString());
+    if (key == ConsoleKey.Spacebar)
+    {
+        Student student = new Student();
+
+        Console.WriteLine("Введите фамилию: ");
+        var lastName = Console.ReadLine();
+        student.LastName = lastName;
+
+        Console.WriteLine("Введите имя: ");
+        var firstName = Console.ReadLine();
+        student.FirstName = firstName;
+
+        Console.WriteLine("Введите отчетство: ");
+        var surName = Console.ReadLine();
+        student.SurName = surName;
+
+        Console.WriteLine("Введите телефон: ");
+        var phone = Console.ReadLine();
+        student.Phone = phone;
+
+        Console.WriteLine("Введите элетронную почту: ");
+        var email = Console.ReadLine();
+        student.Email = email;
+
+        Console.WriteLine("Введите дату зачисления: ");
+        var enrollmentDate = Console.ReadLine();
+        student.EnrollmentDate = DateTime.Parse(s: enrollmentDate);
+
+        try
+        {
+            db.Students.Add(student);
+            db.SaveChanges();
+            Console.WriteLine("Новый студент добавлен в БД.");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error! " + e.Message);
+            res = false;
+        }
+
+
+    }
+    return res;
+}
 static bool FillTables(OtusContext db)
 {
     bool res = true;
@@ -23,7 +75,7 @@ static bool FillTables(OtusContext db)
             new Course { Name = "PostgreSQL Cloud Solutions",  DateStart = DateTime.Parse(s:"2023-04-27"), DateEnd = DateTime.Parse(s:"2023-09-27"), Price = 65000  },
             new Course { Name = "C# Developer. Basic", DateStart = DateTime.Parse(s:"2023-04-26"), DateEnd = DateTime.Parse(s:"2023-09-25"), Price = 50000  }
         };
-        db.Courses.AddRange(entities: courses);        
+        db.Courses.AddRange(entities: courses);
 
         Student[] students = new Student[]
         {
@@ -94,3 +146,4 @@ static bool PrintTables(OtusContext db)
 
     return res;
 }
+
