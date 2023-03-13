@@ -320,3 +320,7 @@ static bool AddNewStudent(OtusContext db)
     return res;
 }
 ```
+
+Результат:
+
+> <image src="images/add_student.png" alt="add_student">
