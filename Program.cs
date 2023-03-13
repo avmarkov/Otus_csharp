@@ -23,10 +23,7 @@ static bool FillTables(OtusContext db)
             new Course { Name = "PostgreSQL Cloud Solutions",  DateStart = DateTime.Parse(s:"2023-04-27"), DateEnd = DateTime.Parse(s:"2023-09-27"), Price = 65000  },
             new Course { Name = "C# Developer. Basic", DateStart = DateTime.Parse(s:"2023-04-26"), DateEnd = DateTime.Parse(s:"2023-09-25"), Price = 50000  }
         };
-        db.Courses.AddRange(entities: courses);
-
-
-        
+        db.Courses.AddRange(entities: courses);        
 
         Student[] students = new Student[]
         {
@@ -38,7 +35,6 @@ static bool FillTables(OtusContext db)
         };
 
         db.Students.AddRange(entities: students);
-
 
         Teacher[] teachers = new Teacher[]
         {
